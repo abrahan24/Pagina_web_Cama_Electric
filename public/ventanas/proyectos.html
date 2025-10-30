@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CAMA S.R.L.</title>
+  <link rel="stylesheet" href="../css/estilos.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+  <div id="header-container"></div>
+
+  <!-- 🔽 Contenido principal -->
+<main id="main-content">
+  <h2 class="titulo-principal">Proyectos Realizados - Cama Electric</h2>
+
+  <div class="contenedor-cards">
+
+    <div class="card">
+      <h3>Sistema BINS</h3>
+      <p>
+        <strong>BINS</strong> es un sistema de <strong>gestión de ventas</strong> desarrollado por Cama Electric, diseñado para pequeñas y medianas empresas. 
+        Permite controlar inventarios, registrar transacciones, emitir reportes financieros y gestionar clientes de manera eficiente, integrando tecnología moderna con una interfaz intuitiva y adaptable.
+      </p>
+      <p><em>Año de desarrollo:</em> 2023 – 2024</p>
+    </div>
+
+    <div class="card">
+      <h3>Sistema CAMA S.R.L.</h3>
+      <p>
+        Plataforma web desarrollada para la gestión operativa de <strong>servicios técnicos y mantenimiento</strong> en Cama Electric. 
+        Incluye módulos para la administración de clientes, técnicos, servicios solicitados, control de estados, y reportes en tiempo real, 
+        mejorando la trazabilidad y eficiencia de las operaciones internas.
+      </p>
+      <p><em>Año de desarrollo:</em> 2024 – en curso</p>
+    </div>
+
+    <div class="card">
+      <h3>Karona App</h3>
+      <p>
+        <strong>Karona App</strong> es una aplicación móvil de transporte desarrollada con <strong>Flutter</strong> y un backend propio en <strong>Spring Boot</strong>. 
+        Permite la conexión entre clientes y conductores en tiempo real, integrando mapas, seguimiento por GPS, sistema de notificaciones y 
+        paneles de control personalizados para optimizar la experiencia de movilidad urbana.
+      </p>
+      <p><em>Año de desarrollo:</em> 2024 – 2025</p>
+    </div>
+
+  </div>
+</main>
+
+
+  <div id="footer-container"></div>
+<a href="https://wa.me/59176108320" class="whatsapp-button" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+ <script>
+    async function cargarHTML(id, archivo) {
+      const respuesta = await fetch(archivo);
+      const contenido = await respuesta.text();
+      document.getElementById(id).innerHTML = contenido;
+      if (id === "header-container") {
+        const actual = window.location.pathname.split("/").pop();
+        setTimeout(() => {
+          document.querySelectorAll("nav a").forEach(link => {
+            const destino = link.getAttribute("href").split("/").pop();
+            if (destino === actual || (actual === "" && destino === "index.html")) {
+              link.classList.add("activo");
+            }
+          });
+        }, 10);
+      }
+    }
+
+    cargarHTML("header-container", "../partials/header.html");
+    cargarHTML("footer-container", "../partials/footer.html");
+  </script>
+</body>
+</html>

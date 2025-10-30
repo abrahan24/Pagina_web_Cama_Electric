@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CAMA S.R.L.</title>
+  <link rel="stylesheet" href="../css/estilos.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+  <div id="header-container"></div>
+  <main id="main-content">
+<section id="servicios">
+  <h2>Nuestros Servicios</h2>
+  <div class="services">
+    
+    <div class="card">
+      <img src="../img/camara.jpg" alt="Instalación de cámaras">
+      <h3>Instalación de Cámaras de Seguridad</h3>
+      <p>Realizamos instalación y configuración de sistemas de videovigilancia CCTV e IP con acceso remoto, grabación en la nube y monitoreo en tiempo real. Adaptamos las soluciones a hogares, empresas e instituciones para garantizar seguridad y control total.</p>
+      <p><strong>Marcas:</strong> Hikvision, Dahua, Uniview</p>
+      <a href="../ventanas/contacto.html" class="btn-servicio">Solicitar Servicio</a>
+    </div>
+
+    <div class="card">
+      <img src="../img/instalacion.jpg" alt="Desarrollo de software">
+      <h3>Desarrollo de Software</h3>
+      <p>Diseñamos e implementamos sistemas personalizados para la gestión empresarial, control de ventas, seguimiento de servicios y automatización de procesos. Utilizamos tecnologías modernas para garantizar rendimiento, seguridad y escalabilidad.</p>
+      <p><strong>Tecnologías:</strong> Python, Flutter, Java, PostgreSQL</p>
+      <a href="../ventanas/contacto.html" class="btn-servicio">Solicitar Servicio</a>
+    </div>
+
+    <div class="card">
+      <img src="../img/venta.jpg" alt="Cableado estructurado">
+      <h3>Cableado Estructurado</h3>
+      <p>Instalamos redes de datos certificadas bajo estándares internacionales, asegurando la conectividad y el rendimiento óptimo de sistemas informáticos, servidores y equipos de comunicación. Ofrecemos soluciones completas de diseño, instalación y pruebas de red.</p>
+      <p><strong>Normas:</strong> ANSI/TIA/EIA-568, ISO/IEC 11801</p>
+      <a href="../ventanas/contacto.html" class="btn-servicio">Solicitar Servicio</a>
+    </div>
+
+    <div class="card">
+      <img src="../img/tablero.jpg" alt="Mantenimiento de equipos">
+      <h3>Mantenimiento de Equipos</h3>
+      <p>Brindamos mantenimiento preventivo y correctivo de computadoras, impresoras, cámaras de seguridad, servidores y equipos electrónicos. Nuestro objetivo es prolongar la vida útil del hardware y asegurar el funcionamiento continuo de los sistemas.</p>
+      <p><strong>Servicios:</strong> Limpieza, diagnóstico, reparación y optimización</p>
+      <a href="../ventanas/contacto.html" class="btn-servicio">Solicitar Servicio</a>
+    </div>
+
+  </div>
+</section>
+
+</main>
+  <div id="footer-container"></div>
+<a href="https://wa.me/59176108320" class="whatsapp-button" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+  <script>
+    async function cargarHTML(id, archivo) {
+      const respuesta = await fetch(archivo);
+      const contenido = await respuesta.text();
+      document.getElementById(id).innerHTML = contenido;
+      if (id === "header-container") {
+        const actual = window.location.pathname.split("/").pop();
+        setTimeout(() => {
+          document.querySelectorAll("nav a").forEach(link => {
+            const destino = link.getAttribute("href").split("/").pop();
+            if (destino === actual || (actual === "" && destino === "index.html")) {
+              link.classList.add("activo");
+            }
+          });
+        }, 10);
+      }
+    }
+    cargarHTML("header-container", "../partials/header.html");
+    cargarHTML("footer-container", "../partials/footer.html");
+  </script>
+</body>
+</html>

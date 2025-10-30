@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CAMA S.R.L.</title>
+  <link rel="stylesheet" href="../css/estilos.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+  <div id="header-container"></div>
+
+<!-- 🔽 Contenido principal -->
+<main id="main-content" class="seccion-nosotros">
+
+  <section class="bloque bloque-destacado">
+    <h2><i class="fas fa-microchip"></i> ¿Quiénes Somos?</h2>
+    <p>
+      <strong>Cama Electric</strong> es una empresa especializada en <strong>ingeniería de sistemas y tecnología aplicada</strong>. Nos dedicamos a ofrecer soluciones tecnológicas integrales en las áreas de <strong>instalación de cámaras de seguridad, desarrollo de software, mantenimiento de equipos informáticos y cableado estructurado</strong>.
+    </p>
+    <p>
+      Nuestro compromiso es garantizar a nuestros clientes <strong>servicios eficientes, seguros y personalizados</strong>, integrando la innovación tecnológica con la experiencia técnica para optimizar la gestión y el rendimiento de sus sistemas.
+    </p>
+    <p>
+      Contamos con un equipo profesional capacitado en las últimas tendencias en <strong>redes, automatización, seguridad digital y sistemas informáticos</strong>, ofreciendo soluciones confiables y adaptadas a las necesidades de cada empresa o institución.
+    </p>
+  </section>
+
+  <section class="bloques-grid">
+
+    <div class="bloque">
+      <h2><i class="fas fa-bullseye"></i> Misión</h2>
+      <p>
+        Desarrollar e implementar soluciones tecnológicas que mejoren la productividad y seguridad de nuestros clientes, integrando <strong>hardware, software y sistemas de comunicación</strong> con altos estándares de calidad y eficiencia.
+      </p>
+    </div>
+
+    <div class="bloque">
+      <h2><i class="fas fa-eye"></i> Visión</h2>
+      <p>
+        Ser reconocidos como una empresa líder en el área de la <strong>ingeniería de sistemas aplicada a la tecnología y seguridad</strong>, destacando por la innovación, confiabilidad y excelencia en la ejecución de proyectos tecnológicos.
+      </p>
+    </div>
+
+    <div class="bloque">
+      <h2><i class="fas fa-lightbulb"></i> Valores</h2>
+      <ul class="valores">
+        <li><i class="fas fa-check-circle"></i> Innovación y mejora continua</li>
+        <li><i class="fas fa-check-circle"></i> Compromiso con la calidad del servicio</li>
+        <li><i class="fas fa-check-circle"></i> Responsabilidad y ética profesional</li>
+        <li><i class="fas fa-check-circle"></i> Confidencialidad y seguridad de la información</li>
+        <li><i class="fas fa-check-circle"></i> Orientación al cliente y soporte personalizado</li>
+      </ul>
+    </div>
+
+  </section>
+
+</main>
+
+
+  <!-- 🔼 Fin del contenido principal -->
+
+  <div id="footer-container"></div>
+<a href="https://wa.me/59176108320" class="whatsapp-button" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+  <script>
+    async function cargarHTML(id, archivo) {
+      const respuesta = await fetch(archivo);
+      const contenido = await respuesta.text();
+      document.getElementById(id).innerHTML = contenido;
+
+      // Agregamos esto solo cuando se cargue el header
+      if (id === "header-container") {
+        const actual = window.location.pathname.split("/").pop();
+        setTimeout(() => {
+          document.querySelectorAll("nav a").forEach(link => {
+            const destino = link.getAttribute("href").split("/").pop();
+            if (destino === actual || (actual === "" && destino === "index.html")) {
+              link.classList.add("activo");
+            }
+          });
+        }, 10);
+      }
+    }
+
+    cargarHTML("header-container", "../partials/header.html");
+    cargarHTML("footer-container", "../partials/footer.html");
+  </script>
+</body>
+</html>
